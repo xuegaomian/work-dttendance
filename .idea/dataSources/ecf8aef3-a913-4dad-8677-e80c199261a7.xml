@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="work_attendance@localhost">
+  <database-model serializer="dbm" rdbms="MYSQL" format-version="4.4">
+    <root id="1"/>
+    <schema id="2" parent="1" name="work_attendance">
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </schema>
+    <schema id="3" parent="1" name="1602"/>
+    <schema id="4" parent="1" name="1603"/>
+    <schema id="5" parent="1" name="auth"/>
+    <schema id="6" parent="1" name="db_blog"/>
+    <schema id="7" parent="1" name="information_schema"/>
+    <schema id="8" parent="1" name="irelandlight_weixin"/>
+    <schema id="9" parent="1" name="ireland_light"/>
+    <schema id="10" parent="1" name="mysql"/>
+    <schema id="11" parent="1" name="performance_schema"/>
+    <schema id="12" parent="1" name="ssm_demo"/>
+    <schema id="13" parent="1" name="test7.19"/>
+    <schema id="14" parent="1" name="user"/>
+    <schema id="15" parent="1" name="video"/>
+    <schema id="16" parent="1" name="weddingdressshop"/>
+    <table id="17" parent="2" name="attend"/>
+    <table id="18" parent="2" name="permission"/>
+    <table id="19" parent="2" name="re_attend"/>
+    <table id="20" parent="2" name="role"/>
+    <table id="21" parent="2" name="role_permission"/>
+    <table id="22" parent="2" name="user"/>
+    <table id="23" parent="2" name="user_role"/>
+    <column id="24" parent="17" name="id">
+      <Position>1</Position>
+      <DataType>bigint(20)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="25" parent="17" name="user_id">
+      <Position>2</Position>
+      <Comment>用户id</Comment>
+      <DataType>bigint(20)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="26" parent="17" name="attend_date">
+      <Position>3</Position>
+      <Comment>考勤日期</Comment>
+      <DataType>date|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="27" parent="17" name="attend_week">
+      <Position>4</Position>
+      <Comment>星期</Comment>
+      <DataType>tinyint(2)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="28" parent="17" name="attend_morning">
+      <Position>5</Position>
+      <Comment>早打卡时间</Comment>
+      <DataType>time|0</DataType>
+    </column>
+    <column id="29" parent="17" name="attend_evening">
+      <Position>6</Position>
+      <Comment>晚打卡时间</Comment>
+      <DataType>time|0</DataType>
+    </column>
+    <column id="30" parent="17" name="absence">
+      <Position>7</Position>
+      <Comment>缺勤时长</Comment>
+      <DataType>int(10)|0</DataType>
+    </column>
+    <column id="31" parent="17" name="attend_status">
+      <Position>8</Position>
+      <Comment>考勤状态 1 正常  2异常</Comment>
+      <DataType>tinyint(2)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;1&apos;</DefaultExpression>
+    </column>
+    <key id="32" parent="17" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="33" parent="18" name="permissionid">
+      <Position>1</Position>
+      <DataType>bigint(20)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="34" parent="18" name="permission">
+      <Position>2</Position>
+      <DataType>varchar(50)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="35" parent="18" name="description">
+      <Position>3</Position>
+      <DataType>varchar(50)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="36" parent="18" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>permissionid</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="37" parent="19" name="id">
+      <Position>1</Position>
+      <DataType>bigint(20)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="38" parent="19" name="attend_id">
+      <Position>2</Position>
+      <Comment>打卡数据ID 关联考勤表</Comment>
+      <DataType>bigint(20)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="39" parent="19" name="attend_date">
+      <Position>3</Position>
+      <Comment>补签日期</Comment>
+      <DataType>date|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="40" parent="19" name="re_attend_starter">
+      <Position>4</Position>
+      <Comment>补签发起人名字</Comment>
+      <DataType>varchar(50)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="41" parent="19" name="re_attend_eve">
+      <Position>5</Position>
+      <Comment>补签晚打卡时间</Comment>
+      <DataType>time|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="42" parent="19" name="re_attend_mor">
+      <Position>6</Position>
+      <Comment>补签早打卡时间</Comment>
+      <DataType>time|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="43" parent="19" name="current_handler">
+      <Position>7</Position>
+      <Comment>当前处理人</Comment>
+      <DataType>varchar(50)|0</DataType>
+    </column>
+    <column id="44" parent="19" name="status">
+      <Position>8</Position>
+      <Comment>状态1 处理中 2 通过  3 不通过 </Comment>
+      <DataType>tinyint(2)|0</DataType>
+      <DefaultExpression>&apos;1&apos;</DefaultExpression>
+    </column>
+    <column id="45" parent="19" name="comments">
+      <Position>9</Position>
+      <Comment>备注 补签原因</Comment>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <key id="46" parent="19" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="47" parent="20" name="roleid">
+      <Position>1</Position>
+      <DataType>bigint(20)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="48" parent="20" name="role">
+      <Position>2</Position>
+      <DataType>varchar(50)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="49" parent="20" name="description">
+      <Position>3</Position>
+      <Comment>角色描述</Comment>
+      <DataType>varchar(50)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="50" parent="20" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>roleid</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="51" parent="21" name="role_id">
+      <Position>1</Position>
+      <DataType>bigint(20)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="52" parent="21" name="permission_id">
+      <Position>2</Position>
+      <DataType>bigint(20)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="53" parent="22" name="id">
+      <Position>1</Position>
+      <DataType>bigint(20)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="54" parent="22" name="username">
+      <Position>2</Position>
+      <DataType>varchar(50)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="55" parent="22" name="password">
+      <Position>3</Position>
+      <DataType>varchar(50)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="56" parent="22" name="real_name">
+      <Position>4</Position>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <column id="57" parent="22" name="mobile">
+      <Position>5</Position>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <column id="58" parent="22" name="head_image">
+      <Position>6</Position>
+      <DataType>varchar(100)|0</DataType>
+    </column>
+    <key id="59" parent="22" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="60" parent="23" name="user_id">
+      <Position>1</Position>
+      <DataType>bigint(20)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="61" parent="23" name="role_id">
+      <Position>2</Position>
+      <DataType>bigint(20)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="62" parent="23" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>user_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+  </database-model>
+</dataSource>
