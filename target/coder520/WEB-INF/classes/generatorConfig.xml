@@ -32,19 +32,19 @@
         -->    
         <!--<javaModelGenerator targetPackage="com.joey.mybaties.test.pojo" targetProject="MAVEN">-->    
         <javaModelGenerator targetPackage="com.coder520.attend.entity"
-                            targetProject="E:\ideaTest\SSMTest\work-attendance\src\main\java">
+                            targetProject="E:\ideaTest\work-dttendance\src\main\java">
             <property name="enableSubPackages" value="true"/>    
             <!-- �����ݿⷵ�ص�ֵ������ǰ��Ŀո�  -->    
             <property name="trimStrings" value="true" />    
         </javaModelGenerator>    
     
         <!--��Ӧ��mapper.xml�ļ�  -->    
-        <sqlMapGenerator targetPackage="com.coder520.attend.dao" targetProject="E:\ideaTest\SSMTest\work-attendance\src\main\java">
+        <sqlMapGenerator targetPackage="com.coder520.attend.dao" targetProject="E:\ideaTest\work-dttendance\src\main\java">
             <property name="enableSubPackages" value="true"/>    
         </sqlMapGenerator>    
     
         <!-- ��Ӧ��Mapper�ӿ����ļ� -->    
-        <javaClientGenerator type="XMLMAPPER" targetPackage="com.coder520.attend.dao" targetProject="E:\ideaTest\SSMTest\work-attendance\src\main\java">
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.coder520.attend.dao" targetProject="E:\ideaTest\work-dttendance\src\main\java">
             <property name="enableSubPackages" value="true"/>    
         </javaClientGenerator>    
     

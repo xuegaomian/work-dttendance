@@ -14,6 +14,15 @@
   <sql id="Base_Column_List" >
     id, user_id, attend_date, attend_week, attend_morning, attend_evening, absence, attend_status
   </sql>
+  <!--根据userId查询Attend  并且时间为今天-->
+  <select id="selectTodaySignRecord" resultMap="BaseResultMap" >
+    select
+    <include refid="Base_Column_List" />
+    from attend
+    where user_id = #{user_id,jdbcType=BIGINT}
+    AND attend_date=CURDATE()
+  </select>
+
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
     select 
     <include refid="Base_Column_List" />
