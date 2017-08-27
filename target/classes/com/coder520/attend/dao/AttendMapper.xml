@@ -23,6 +23,40 @@
     AND attend_date=CURDATE()
   </select>
 
+  <!--查询符合条件的打卡记录-->
+  <select id="countByConditon" resultType="int">
+    select
+    count(0)
+    from attend
+    where user_id = #{userId}
+    <if test="startDate != null and endDate != null" >
+      AND attend_date BETWEEN  #{startDate} AND  #{endDate}
+    </if>
+  </select>
+  <!--分页查询-->
+  <select id="selectAttendPage" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from attend
+    where user_id = #{userId}
+    <if test="startDate !=null and endDate !=null">
+      AND attend_date BETWEEN #{startDate} AND #{endDate}
+    </if>
+    LIMIT #{startRow},#{pageSize}
+  </select>
+
+  <!--查询今天没打卡的UserId-->
+  <select id="selectTodayAbsence" resultType="Long" >
+    select
+    u.id
+    from user u
+    where u.id NOT IN(
+      SELECT a.user_id
+        FROM attend a
+        WHERE a.attend_date=CURRENT_DATE()
+    )
+  </select>
+
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
     select 
     <include refid="Base_Column_List" />
@@ -33,6 +67,18 @@
     delete from attend
     where id = #{id,jdbcType=BIGINT}
   </delete>
+
+  <!--批量插入异常打卡的用户的异常信息-->
+  <insert id="batchInsert" parameterType="list" >
+    insert into attend (user_id, attend_date,
+    attend_week, absence, attend_status)
+    values
+    <foreach collection="list" item="item" index="index" separator="," >
+      (#{item.userId}, #{item.attendDate},#{item.attendWeek}, #{item.absence},#{item.attendStatus})
+    </foreach>
+
+  </insert>
+
   <insert id="insert" parameterType="com.coder520.attend.entity.Attend" >
     insert into attend (id, user_id, attend_date, 
       attend_week, attend_morning, attend_evening, 

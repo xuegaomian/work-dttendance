@@ -75,7 +75,7 @@ public class Attend {
         this.absence = absence;
     }
 
-    public Byte getAttendStatus() {
+    public Byte getAttendStatus(Byte attendStatusAbnormal) {
         return attendStatus;
     }
 

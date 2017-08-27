@@ -79,5 +79,7 @@
         <property name="filters" value="mergeStat"/>
     </bean>
 
+    <!--导入定时触发器的配置文件-->
+    <import resource="spring-job.xml"/>
 
 </beans>

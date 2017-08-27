@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>考勤系统主页</title>
+    <title>码码在线考勤系统</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.6 -->
@@ -35,7 +35,7 @@
             <!-- mini logo for sidebar mini 50x50 pixels -->
             <span class="logo-mini"></span>
             <!-- logo for regular state and mobile devices -->
-            <span class="logo-lg">考勤主页</span>
+            <span class="logo-lg">码码考勤</span>
         </a>
 
         <!-- Header Navbar -->
@@ -114,7 +114,8 @@
                     </a>
                     <ul class="treeview-menu">
                         <li><a href="/attend">打卡记录</a></li>
-                        <li><a href="#">审批记录</a></li>
+                        <li><a href="/reAttend">补签记录</a></li>
+                        </require><li><a href="/reAttend/list">待办补签</a></li>
                     </ul>
                 </li>
             </ul>

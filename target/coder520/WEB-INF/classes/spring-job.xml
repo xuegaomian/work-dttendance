@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--声明工具类-->
+    <bean id="taskJob" class="com.coder520.common.task.AttendCheckTask"/>
+    <bean id="jobDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <!--要执行定时任务在哪个bean里边-->
+        <property name="targetObject" ref="taskJob"/>
+        <!--执行定时任务的方法-->
+        <property name="targetMethod" value="checkAttend"/>
+    </bean>
+    <!--触发定时器-->
+    <bean id="attendCheck" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+        <property name="jobDetail" ref="jobDetail"/>
+        <property name="cronExpression">
+            <!--通过表达式来描述触发的时间-->
+            <!--从第零秒开始每十秒触发一次-->
+            <!--<value>0/6000 * * * * ?</value>-->
+            <!--每天23点触发-->
+            <value>0 0 23 * * ? *</value>
+        </property>
+    </bean>
+    <bean id="scheduler" class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+        <property name="triggers">
+            <list>
+                <ref bean="attendCheck"/>
+            </list>
+        </property>
+    </bean>
+</beans>
